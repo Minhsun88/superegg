@@ -3,18 +3,20 @@
 const Controller = require('egg').Controller;
 
 class indexController extends Controller {
-  async member(){
+  async member() {
     const { ctx } = this;
     const params = this.ctx.params;
     const member = await this.ctx.service.member.pageData(params.page);
     const count = await this.ctx.service.member.getCount();
     await ctx.render('index.ejs', { member: member, page: count });
   }
-  async regist(){
+
+  async regist() {
     const { ctx } = this;
     await ctx.render('regist.ejs');
   }
-  async create(){
+
+  async create() {
     const { ctx } = this;
     const params = this.ctx.request.body;
     const fullchinese = /^[\u4e00-\u9fa5]+$/;
@@ -23,6 +25,7 @@ class indexController extends Controller {
     const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
     let errorpoint = 0;
     const message = {};
+
     if (params.name === ''){
       message.name = '（輸入不能為空值）';
       errorpoint++;
@@ -66,7 +69,8 @@ class indexController extends Controller {
       await ctx.redirect('/member/1');
     }
   }
-  async alter(){
+  
+  async alter() {
     const { ctx } = this;
     const params = this.ctx.request.body;
     if (Object.keys(params).length !== 0){
@@ -80,7 +84,8 @@ class indexController extends Controller {
       await ctx.render('index.ejs', { member: member, page: count, message: '請選擇修改項目' });
     }
   }
-  async update(){
+
+  async update() {
     const { ctx } = this;
     const params = this.ctx.request.body;
     const fullchinese = /^[\u4e00-\u9fa5]+$/;
@@ -128,7 +133,8 @@ class indexController extends Controller {
       await ctx.redirect('/member/1');
     }
   }
-  async comfirm(){
+
+  async comfirm() {
     const { ctx } = this;
     const params = this.ctx.request.body;
     if (Object.keys(params).length !== 0){
@@ -142,7 +148,8 @@ class indexController extends Controller {
       await ctx.render('index.ejs', { member: member, page: count, message: '請選擇刪除項目'} );
     }
   }
-  async delete(){
+
+  async delete() {
     const { ctx } = this;
     const params = this.ctx.request.body;
     await this.ctx.service.member.deleteData(params);
