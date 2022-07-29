@@ -12,7 +12,7 @@ class managerController extends Controller {
     const { ctx } = this;
     const params = this.ctx.request.body;
     const certificate = await this.ctx.service.manager.getData(params);
-    if (certificate === true){
+    if (certificate === true) {
       await ctx.redirect('/member/1');
     } else {
       await ctx.render('login.ejs', certificate);
