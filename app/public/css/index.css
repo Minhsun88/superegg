@@ -64,6 +64,7 @@ tr:nth-last-of-type(odd) {
 }
 
 h1 { 
+  padding-top: 10px;
   text-decoration: underline;
   margin-bottom: 10px;
 }
@@ -71,6 +72,7 @@ h1 {
 select { 
   font-weight: bolder;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 #alert { 

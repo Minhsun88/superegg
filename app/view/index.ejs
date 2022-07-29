@@ -37,32 +37,32 @@
               <th width = 10%><td>密碼</td></th>
             </tr>
             <tr>
-              <% for(var i = 0; i < memberData.length; i++) {%>
+              <% for(var i = 0; i < Data.length; i++) {%>
                 <tr>
                   <td>
-                    <input name = "id" id = "id" type = "radio" value = "<%= memberData[i].member_id %>">
+                    <input name = "id" id = "id" type = "radio" value = "<%= Data[i].member_id %>">
                   </td>
                   <td>
-                    <%= memberData[i].member_name %>
+                    <%= Data[i].member_name %>
                   </td>
                   <td>
-                    <% if (memberData[i].sex == '1'){ %>
+                    <% if (Data[i].sex == '1'){ %>
                       男
                     <% } else { %>
                       女
                     <% } %>
                   </td>
                   <td>
-                    <%= memberData[i].phone %>
+                    <%= Data[i].phone %>
                   </td>
                   <td>
-                    <%= memberData[i].birthday%>
+                    <%= Data[i].birthday%>
                   </td>
                   <td>
-                    <%= memberData[i].email %>
+                    <%= Data[i].email %>
                   </td>
                   <td>
-                    <%= memberData[i].password %>
+                    <%= Data[i].password %>
                   </td>
                 </tr>
             <% } %>

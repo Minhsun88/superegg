@@ -6,9 +6,9 @@ class indexController extends Controller {
   async member() {
     const { ctx } = this;
     const params = this.ctx.params;
-    const memberData = await this.ctx.service.member.pageData(params.page);
+    const data = await this.ctx.service.member.pageData(params.page);
     const count = await this.ctx.service.member.getCount();
-    await ctx.render('index.ejs', { member: memberData, page: count });
+    await ctx.render('index.ejs', { Data: data, page: count });
   }
 
   async regist() {
@@ -74,14 +74,14 @@ class indexController extends Controller {
     const { ctx } = this;
     const params = this.ctx.request.body;
     if (Object.keys(params).length !== 0) {
-      const memberData = await this.app.model.Member.findOne({
+      const data = await this.app.model.Member.findOne({
         where: { member_id: params.id },
       });
-      await ctx.render('alter.ejs', { member: memberData });
+      await ctx.render('alter.ejs', { Data: data });
     } else {
-      const memberData = await this.ctx.service.member.pageData('1');
+      const data = await this.ctx.service.member.pageData('1');
       const count = await this.ctx.service.member.getCount();
-      await ctx.render('index.ejs', { member: memberData, page: count, message: '請選擇修改項目' });
+      await ctx.render('index.ejs', { Data: data, page: count, message: '請選擇修改項目' });
     }
   }
 
@@ -138,14 +138,14 @@ class indexController extends Controller {
     const { ctx } = this;
     const params = this.ctx.request.body;
     if (Object.keys(params).length !== 0) {
-      const memberData = await this.app.model.Member.findOne({
+      const data = await this.app.model.Member.findOne({
         where: { member_id: params.id },
       });
-      await ctx.render('comfirm.ejs', { member: memberData });
+      await ctx.render('comfirm.ejs', { Data: data });
     } else {
-      const memberData = await this.ctx.service.member.pageData('1');
+      const data = await this.ctx.service.member.pageData('1');
       const count = await this.ctx.service.member.getCount();
-      await ctx.render('index.ejs', { member: memberData, page: count, message: '請選擇刪除項目' });
+      await ctx.render('index.ejs', { Data: data, page: count, message: '請選擇刪除項目' });
     }
   }
 
