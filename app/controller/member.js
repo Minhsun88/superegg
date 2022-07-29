@@ -5,9 +5,9 @@ const Controller = require('egg').Controller;
 class indexController extends Controller {
   async member() {
     const { ctx } = this;
-    let params = this.ctx.params;
+    const params = this.ctx.params;
     const member = await this.ctx.service.member.pageData(params.page);
-    let count = await this.ctx.service.member.getCount();
+    const count = await this.ctx.service.member.getCount();
     await ctx.render('index.ejs', { data: member, page: count } );
   } 
   async regist() {
