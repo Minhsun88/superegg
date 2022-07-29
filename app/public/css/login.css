@@ -1,0 +1,50 @@
+.wrap { 
+  width: 1000px;
+  height: 300px;
+  margin: 0 auto;
+  margin-top: 100px;
+  background-color: rgb(196, 193, 193);
+  box-shadow: 0px 15px 7px rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+}
+
+h1 { 
+  padding-top: 30px;
+  text-align: center;
+}
+
+#accountFeedback, #passwordFeedback { 
+  text-align: center;
+  color: rgb(255, 0, 0);
+}
+
+.inputbox { 
+  width: 300px;
+  text-align: center;
+  margin-left: 344px;
+  padding: 5px;
+}
+
+#accountBox { 
+  height: 40px;
+}
+
+#passwordBox { 
+  height: 40px;
+}
+
+.loginbtn { 
+  width: 300px;
+  padding: 5px;
+  margin-left: 351px;
+  margin-top: 20px;
+}
+
+#alert { 
+  width: 300px;
+  background-color: rgb(189, 217, 242);
+  border: solid black 1px;
+  display: none;
+  padding: 10px;
+  text-align: center;
+}
