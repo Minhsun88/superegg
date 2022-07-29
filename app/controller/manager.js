@@ -13,7 +13,7 @@ class managerController extends Controller {
     let certificate = await this.ctx.service.manager.getData(params);
     if(certificate === true) {
       await ctx.redirect('/member/1');
-    } else {
+    }else {
       await ctx.render('login.ejs', { msg: certificate.msg, account: certificate.account, password: certificate.password });
     }
   }
