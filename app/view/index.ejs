@@ -15,7 +15,7 @@
   <body>
     <div class = "background">
       <div class = "inside">
-        <% if ("undefined" != typeof msg){ %>
+        <% if (typeof msg != 'undefined'){ %>
           <div id = "alert"><%= msg %></div>
         <% } %>
         <h1>會員名冊</h1>
@@ -48,7 +48,7 @@
                   <td>
                     <% if (data[i].sex == '1'){ %>
                       男
-                    <% }else{ %>
+                    <% } else { %>
                       女
                     <% } %>
                   </td>
