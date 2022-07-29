@@ -58,18 +58,18 @@ class indexController extends Controller {
       message.password = '（密碼必須包含數字、大小寫，至少8位數）';
       errorpoint++;
     }
-    if ( typeof params.sex === 'undefined') {
+    if (typeof params.sex === 'undefined') {
       message.sex = '（請選擇性別）';
       errorpoint++;
     }
     if (errorpoint > 0) {
-      await ctx.render('regist.ejs', { message: message, inputvalues: params });
+      await ctx.render('regist.ejs', { message, inputvalues: params });
     } else {
       await this.ctx.service.member.createData(params);
       await ctx.redirect('/member/1');
     }
   }
-  
+
   async alter() {
     const { ctx } = this;
     const params = this.ctx.request.body;
@@ -127,7 +127,7 @@ class indexController extends Controller {
       errorpoint++;
     }
     if (errorpoint > 0) {
-      await ctx.render('alter.ejs', { message: message, inputvalues: params });
+      await ctx.render('alter.ejs', { message, inputvalues: params });
     } else {
       await this.ctx.service.member.updateData(params);
       await ctx.redirect('/member/1');
@@ -145,7 +145,7 @@ class indexController extends Controller {
     } else {
       const memberData = await this.ctx.service.member.pageData('1');
       const count = await this.ctx.service.member.getCount();
-      await ctx.render('index.ejs', { member: memberData, page: count, message: '請選擇刪除項目'});
+      await ctx.render('index.ejs', { member: memberData, page: count, message: '請選擇刪除項目' });
     }
   }
 

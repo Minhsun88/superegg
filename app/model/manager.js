@@ -1,6 +1,6 @@
 module.exports = app => {
   const { STRING, INTEGER } = app.Sequelize;
- 
+
   const Manager = app.model.define('manager', {
     manager_id: {
       type: INTEGER,
@@ -13,9 +13,9 @@ module.exports = app => {
   },
   {
     freezeTableName: true,
-    tableName: "manager",
+    tableName: 'manager',
     timestamps: false,
   });
- 
+
   return Manager;
 };
