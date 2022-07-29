@@ -22,44 +22,44 @@ class indexController extends Controller {
     const phone = /^[0-9] {10}$/g;
     const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
     let err = 0;
-    let msg = {};
-    if(params.name === "") {
+    const msg = {};
+    if (params.name === '') {
       msg.name = '（輸入不能為空值）';
       err++;
-    }else if(!fullchinese.test(params.name)) {
+    }else if (!fullchinese.test(params.name)) {
       msg.name = '（名稱只能輸入中文）';
       err++;
     }
-    if(params.phone === "") {
+    if (params.phone === '') {
       msg.phone = '（輸入不能為空值）';
       err++;
-    }else if(!phone.test(params.phone)) {
+    }else if (!phone.test(params.phone)) {
       msg.phone = '（手機 格式不正確）';
       err++;
     }
-    if(params.birthday === "") {
+    if (params.birthday === '') {
       msg.birthday = '（輸入不能為空值）';
       err++;
     }
-    if(params.email === "") {
+    if (params.email === '') {
       msg.email = '（輸入不能為空值）';
       err++;
-    }else if(!email.test(params.email)) {
+    }else if (!email.test(params.email)) {
       msg.email = '（email 格式不正確）';
       err++;
     }
-    if(params.password === "") {
+    if (params.password === '') {
       msg.password = '（輸入不能為空值）';
       err++;
-    }else if(!password.test(params.password)) {
+    }else if (!password.test(params.password)) {
       msg.password = '（密碼必須包含數字、大小寫，至少8位數）';
       err++;
     }
-    if("undefined" === typeof params.sex) {
+    if ("undefined" === typeof params.sex) {
       msg.sex = '（請選擇性別）';
       err++;
     }
-    if(err > 0) {
+    if (err > 0) {
       await ctx.render('regist.ejs', { msg: msg, inputvalues: params });
     }else {
       await this.ctx.service.member.createData(params);
@@ -69,7 +69,7 @@ class indexController extends Controller {
   async alter() {
     const { ctx } = this;
     const params = this.ctx.request.body;
-    if(Object.keys(params).length !== 0) {
+    if (Object.keys(params).length !== 0) {
       const data = await this.app.model.Member.findOne( {
         where: { member_id: params.id }
       });
@@ -83,45 +83,45 @@ class indexController extends Controller {
   async update() {
     const { ctx } = this;
     const params = this.ctx.request.body;
-    let fullchinese = /^[\u4e00-\u9fa5]+$/;
-    let email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z] {2,4} )$/;
-    let phone = /^[0-9] {10} $/g;
-    let password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
+    const fullchinese = /^[\u4e00-\u9fa5]+$/;
+    const email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z] {2,4} )$/;
+    const phone = /^[0-9] {10} $/g;
+    const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
     let err = 0;
-    let msg = {};
-    if(params.name === "") {
+    const msg = {};
+    if (params.name === '') {
       msg.name = '（輸入不能為空值）';
       err++;
-    }else if(!fullchinese.test(params.name)) {
+    }else if (!fullchinese.test(params.name)) {
       msg.name = '（名稱只能輸入中文）';
       err++;
     }
-    if(params.phone === "") {
+    if (params.phone === '') {
       msg.phone = '（輸入不能為空值）';
       err++;
-    }else if(!phone.test(params.phone)) {
+    }else if (!phone.test(params.phone)) {
       msg.phone = '（手機 格式不正確）';
       err++;
     }
-    if(params.birthday === "") {
+    if (params.birthday === '') {
       msg.birthday = '（輸入不能為空值）';
       err++;
     }
-    if(params.email === "") {
+    if (params.email === '') {
       msg.email = '（輸入不能為空值）';
       err++;
-    }else if(!email.test(params.email)) {
+    }else if (!email.test(params.email)) {
       msg.email = '（email 格式不正確）';
       err++;
     }
-    if(params.password === "") {
+    if (params.password === '') {
       msg.password = '（輸入不能為空值）';
       err++;
-    }else if(!password.test(params.password)) {
+    }else if (!password.test(params.password)) {
       msg.password = '（密碼必須包含數字、大小寫，至少8位數）';
       err++;
     }
-    if(err > 0) {
+    if (err > 0) {
       await ctx.render('alter.ejs', { msg: msg, inputvalues: params } );
     }else {
       await this.ctx.service.member.updateData(params);
@@ -131,7 +131,7 @@ class indexController extends Controller {
   async comfirm() {
     const { ctx } = this;
     const params = this.ctx.request.body;
-    if(Object.keys(params).length !== 0) {
+    if (Object.keys(params).length !== 0) {
       const data = await this.app.model.Member.findOne( {
         where: { member_id: params.id } 
       });

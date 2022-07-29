@@ -13,21 +13,21 @@
         <form>
           <p>姓名</p>
           <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
               <input class = "inputbox" type = "typebox" name = "name" placeholder = "請輸入中文" 
               value = "<%= inputvalues.name %>">
-              <% if("undefined" !== typeof msg){ %>
+              <% if ("undefined" !== typeof msg){ %>
                 <div class = "alert"><%= msg.name %></div>
               <% } %>
               <br>
-            <% } else { %>
+            <% }else { %>
               <input class = "inputbox" type = "typebox" name = "name" placeholder = "請輸入中文"><br>
             <% } %>
           </div>
           <p>性別</p>
           <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
-              <% if(inputvalues.sex === '1'){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
+              <% if (inputvalues.sex === '1'){ %>
                 <label class = "containerBoy">男
                   <input type = "radio" name = "sex" value = "1" checked>
                   <span class = "checkmark"></span>
@@ -36,7 +36,7 @@
                   <input type = "radio" name = "sex" value = "0">
                   <span class = "checkmark"></span>
                 </label> <br><br><br>
-              <% } else if(inputvalues.sex === '0') { %>
+              <% }else if (inputvalues.sex === '0') { %>
                 <label class = "containerBoy">男
                   <input type = "radio" name = "sex" value = "1">
                   <span class = "checkmark"></span>
@@ -45,7 +45,7 @@
                   <input type = "radio" name = "sex" value = "0" checked>
                   <span class = "checkmark"></span>
                 </label><br><br><br>
-              <% } else {%>
+              <% }else {%>
                 <label class = "containerBoy">男
                   <input type = "radio" name = "sex" value = "1">
                   <span class = "checkmark"></span>
@@ -54,12 +54,12 @@
                   <input type = "radio" name = "sex" value = "0">
                   <span class = "checkmark"></span>
                 </label>
-                <% if("undefined" !== typeof msg){ %>
+                <% if ("undefined" !== typeof msg){ %>
                   <div class = "alert"><%= msg.sex %></div>
                 <% } %>
                 <br><br><br>
               <% } %>
-            <% } else { %>
+            <% }else { %>
               <label class = "containerBoy">男
                 <input type = "radio" name = "sex" value = "1">
                 <span class = "checkmark"></span>
@@ -72,52 +72,52 @@
           </div>
           <p>手機</p>
           <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
               <input class = "inputbox" type = "typebox" name = "phone" placeholder = "請輸入行動電話(ex.09xxxxxxxx)" 
               value = "<%= inputvalues.phone %>">
-                <% if("undefined" !== typeof msg){ %>
+                <% if ("undefined" !== typeof msg){ %>
                   <div class = "alert"><%= msg.phone %></div>
                 <% } %>
               <br>
-            <% } else { %>
+            <% }else { %>
               <input class = "inputbox" type = "typebox" name = "phone" placeholder = "請輸入行動電話(ex.09xxxxxxxx)"><br>
             <% } %>
           </div>
           <p>生日</p>
           <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
               <input class = "inputbox" type = "date" name = "birthday" value = "<%= inputvalues.birthday %>">
-              <% if("undefined" !== typeof msg){ %>
+              <% if ("undefined" !== typeof msg){ %>
                 <div class = "alert"><%= msg.birthday %></div>
               <% } %>
               <br>
-            <% } else { %>
+            <% }else { %>
               <input class = "inputbox" type = "date" name = "birthday"><br>
             <% } %>
           </div>
           <p>電子信箱</p>
             <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
               <input class = "inputbox" type = "typebox" name = "email" placeholder = "請輸入信箱(ex.123@example.com)" 
               value = "<%= inputvalues.email %>">
-              <% if("undefined" !== typeof msg){ %>
+              <% if ("undefined" !== typeof msg){ %>
                 <div class = "alert"><%= msg.email %></div>
               <% } %>
               <br>
-            <% } else { %>
+            <% }else { %>
               <input class = "inputbox" type = "typebox" name = "email" placeholder = "請輸入信箱(ex.123@example.com)"><br>
             <% } %>
           </div>
           <p>密碼</p>
           <div class = "container">
-            <% if("undefined" !== typeof inputvalues){ %>
+            <% if ("undefined" !== typeof inputvalues){ %>
               <input class = "inputbox" type = "typebox" name = "password" placeholder = "請輸入密碼" 
               value = "<%= inputvalues.password %>">
-              <% if("undefined" !== typeof msg){ %>
+              <% if ("undefined" !== typeof msg){ %>
                 <div class = "alert"><%= msg.password %></div>
               <% } %>
               <br>
-            <% } else { %>
+            <% }else { %>
               <input class = "inputbox" type = "typebox" name = "password" placeholder = "請輸入密碼"><br>
             <% } %>
           </div>
