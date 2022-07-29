@@ -15,8 +15,8 @@
   <body>
     <div class = "background">
       <div class = "inside">
-        <% if (typeof msg != 'undefined'){ %>
-          <div id = "alert"><%= msg %></div>
+        <% if (typeof message != 'undefined'){ %>
+          <div id = "alert"><%= message %></div>
         <% } %>
         <h1>會員名冊</h1>
         <select onchange = "javascript:location.href = '/member/' + this.value;">

@@ -17,8 +17,8 @@
               <% if (typeof inputvalues !== 'undefined'){ %>
                 <input class = "inputbox" type = "typebox" name = "name" placeholder = "請輸入中文" 
                 value = "<%= inputvalues.name %>">
-                <% if (typeof msg !== 'undefined'){ %>
-                  <div class = "alert"><%= msg.name %></div>
+                <% if (typeof message !== 'undefined'){ %>
+                  <div class = "alert"><%= message.name %></div>
                 <% } %>
                 <br>
               <% } else { %>
@@ -78,8 +78,8 @@
               <% if (typeof inputvalues !== 'undefined'){ %>
                 <input class = "inputbox" type = "typebox" name = "phone" placeholder = "請輸入行動電話(ex.09xxxxxxxx)" 
                 value = "<%= inputvalues.phone %>">
-                  <% if ('undefined' != typeof msg){ %>
-                    <div class = "alert"><%= msg.phone %></div>
+                  <% if ('undefined' != typeof message){ %>
+                    <div class = "alert"><%= message.phone %></div>
                   <% } %>
                 <br>
               <% } else { %>
@@ -92,8 +92,8 @@
             <div class = "container">
               <% if (typeof inputvalues !== 'undefined'){ %>
                 <input class = "inputbox" type = "date" name = "birthday" value = "<%= inputvalues.birthday %>">
-                <% if ('undefined' != typeof msg){ %>
-                  <div class = "alert"><%= msg.birthday %></div>
+                <% if ('undefined' != typeof message){ %>
+                  <div class = "alert"><%= message.birthday %></div>
                 <% } %>
                 <br>
               <% } else { %>
@@ -107,8 +107,8 @@
                 <% if (typeof inputvalues !== 'undefined'){ %>
                   <input class = "inputbox" type = "typebox" name = "email" placeholder = "請輸入信箱(ex.123@example.com)" 
                   value = "<%= inputvalues.email %>">
-                  <% if (typeof msg !== 'undefined'){ %>
-                    <div class = "alert"><%= msg.email %></div>
+                  <% if (typeof message !== 'undefined'){ %>
+                    <div class = "alert"><%= message.email %></div>
                   <% } %>
                   <br>
                 <% } else { %>
@@ -122,8 +122,8 @@
               <% if (typeof inputvalues !== 'undefined'){ %>
                 <input class = "inputbox" type = "typebox" name = "password" placeholder = "請輸入密碼" 
                 value = "<%= inputvalues.password %>">
-                <% if (typeof msg !== 'undefined'){ %>
-                  <div class = "alert"><%= msg.password %></div>
+                <% if (typeof message !== 'undefined'){ %>
+                  <div class = "alert"><%= message.password %></div>
                 <% } %>
                 <br>
               <% } else { %>

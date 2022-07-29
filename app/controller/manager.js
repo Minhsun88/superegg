@@ -3,18 +3,18 @@
 const Controller = require('egg').Controller;
 
 class managerController extends Controller {
-  async login() {
+  async login(){
     const { ctx } = this;
     await ctx.render('login.ejs');
   }
-  async identify() {
+  async identify(){
     const { ctx } = this;
     const params = this.ctx.request.body;
     const certificate = await this.ctx.service.manager.getData(params);
-    if (certificate === true) {
+    if (certificate === true){
       await ctx.redirect('/member/1');
     } else {
-      await ctx.render('login.ejs', { msg: certificate.msg, account: certificate.account, password: certificate.password });
+      await ctx.render('login.ejs', { message: certificate.message, account: certificate.account, password: certificate.password });
     }
   }
 }

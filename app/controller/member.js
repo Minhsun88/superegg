@@ -3,18 +3,18 @@
 const Controller = require('egg').Controller;
 
 class indexController extends Controller {
-  async member() {
+  async member(){
     const { ctx } = this;
     const params = this.ctx.params;
     const member = await this.ctx.service.member.pageData(params.page);
     const count = await this.ctx.service.member.getCount();
-    await ctx.render('index.ejs', { data: member, page: count });
+    await ctx.render('index.ejs', { member: member, page: count });
   }
-  async regist() {
+  async regist(){
     const { ctx } = this;
     await ctx.render('regist.ejs');
   }
-  async create() {
+  async create(){
     const { ctx } = this;
     const params = this.ctx.request.body;
     const fullchinese = /^[\u4e00-\u9fa5]+$/;
@@ -22,65 +22,65 @@ class indexController extends Controller {
     const phone = /^[0-9] {10}$/g;
     const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
     let errorpoint = 0;
-    const msg = {};
-    if (params.name === '') {
-      msg.name = '（輸入不能為空值）';
+    const message = {};
+    if (params.name === ''){
+      message.name = '（輸入不能為空值）';
       errorpoint++;
-    } else if (!fullchinese.test(params.name)) {
-      msg.name = '（名稱只能輸入中文）';
-      errorpoint++;
-    }
-    if (params.phone === '') {
-      msg.phone = '（輸入不能為空值）';
-      errorpoint++;
-    } else if (!phone.test(params.phone)) {
-      msg.phone = '（手機 格式不正確）';
+    } else if (!fullchinese.test(params.name)){
+      message.name = '（名稱只能輸入中文）';
       errorpoint++;
     }
-    if (params.birthday === '') {
-      msg.birthday = '（輸入不能為空值）';
+    if (params.phone === ''){
+      message.phone = '（輸入不能為空值）';
+      errorpoint++;
+    } else if (!phone.test(params.phone)){
+      message.phone = '（手機 格式不正確）';
       errorpoint++;
     }
-    if (params.email === '') {
-      msg.email = '（輸入不能為空值）';
-      errorpoint++;
-    } else if (!email.test(params.email)) {
-      msg.email = '（email 格式不正確）';
+    if (params.birthday === ''){
+      message.birthday = '（輸入不能為空值）';
       errorpoint++;
     }
-    if (params.password === '') {
-      msg.password = '（輸入不能為空值）';
+    if (params.email === ''){
+      message.email = '（輸入不能為空值）';
       errorpoint++;
-    } else if (!password.test(params.password)) {
-      msg.password = '（密碼必須包含數字、大小寫，至少8位數）';
-      errorpoint++;
-    }
-    if ( typeof params.sex === 'undefined') {
-      msg.sex = '（請選擇性別）';
+    } else if (!email.test(params.email)){
+      message.email = '（email 格式不正確）';
       errorpoint++;
     }
-    if (errorpoint > 0) {
-      await ctx.render('regist.ejs', { msg: msg, inputvalues: params });
+    if (params.password === ''){
+      message.password = '（輸入不能為空值）';
+      errorpoint++;
+    } else if (!password.test(params.password)){
+      message.password = '（密碼必須包含數字、大小寫，至少8位數）';
+      errorpoint++;
+    }
+    if ( typeof params.sex === 'undefined'){
+      message.sex = '（請選擇性別）';
+      errorpoint++;
+    }
+    if (errorpoint > 0){
+      await ctx.render('regist.ejs', { message: message, inputvalues: params });
     } else {
       await this.ctx.service.member.createData(params);
       await ctx.redirect('/member/1');
     }
   }
-  async alter() {
+  async alter(){
     const { ctx } = this;
     const params = this.ctx.request.body;
-    if (Object.keys(params).length !== 0) {
-      const data = await this.app.model.Member.findOne( {
-        where: { member_id: params.id }
+    if (Object.keys(params).length !== 0){
+      const member = await this.app.model.Member.findOne({
+        where: { member_id: params.id },
       });
-      await ctx.render('alter.ejs', { data: data } );
+      await ctx.render('alter.ejs', { member: member });
     } else {
-      let member = await this.ctx.service.member.pageData('1');
+      const member = await this.ctx.service.member.pageData('1');
       const count = await this.ctx.service.member.getCount();
-      await ctx.render('index.ejs', { data: member, page: count, msg: '請選擇修改項目' } );
+      await ctx.render('index.ejs', { member: member, page: count, message: '請選擇修改項目' });
     }
   }
-  async update() {
+  async update(){
     const { ctx } = this;
     const params = this.ctx.request.body;
     const fullchinese = /^[\u4e00-\u9fa5]+$/;
@@ -88,61 +88,61 @@ class indexController extends Controller {
     const phone = /^[0-9] {10} $/g;
     const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S] {8,16} $/;
     let errorpoint = 0;
-    const msg = {};
-    if (params.name === '') {
-      msg.name = '（輸入不能為空值）';
+    const message = {};
+    if (params.name === ''){
+      message.name = '（輸入不能為空值）';
       errorpoint++;
-    } else if (!fullchinese.test(params.name)) {
-      msg.name = '（名稱只能輸入中文）';
-      errorpoint++;
-    }
-    if (params.phone === '') {
-      msg.phone = '（輸入不能為空值）';
-      errorpoint++;
-    } else if (!phone.test(params.phone)) {
-      msg.phone = '（手機 格式不正確）';
+    } else if (!fullchinese.test(params.name)){
+      message.name = '（名稱只能輸入中文）';
       errorpoint++;
     }
-    if (params.birthday === '') {
-      msg.birthday = '（輸入不能為空值）';
+    if (params.phone === ''){
+      message.phone = '（輸入不能為空值）';
+      errorpoint++;
+    } else if (!phone.test(params.phone)){
+      message.phone = '（手機 格式不正確）';
       errorpoint++;
     }
-    if (params.email === '') {
-      msg.email = '（輸入不能為空值）';
-      errorpoint++;
-    } else if (!email.test(params.email)) {
-      msg.email = '（email 格式不正確）';
+    if (params.birthday === ''){
+      message.birthday = '（輸入不能為空值）';
       errorpoint++;
     }
-    if (params.password === '') {
-      msg.password = '（輸入不能為空值）';
+    if (params.email === ''){
+      message.email = '（輸入不能為空值）';
       errorpoint++;
-    } else if (!password.test(params.password)) {
-      msg.password = '（密碼必須包含數字、大小寫，至少8位數）';
+    } else if (!email.test(params.email)){
+      message.email = '（email 格式不正確）';
       errorpoint++;
     }
-    if (errorpoint > 0) {
-      await ctx.render('alter.ejs', { msg: msg, inputvalues: params } );
+    if (params.password === ''){
+      message.password = '（輸入不能為空值）';
+      errorpoint++;
+    } else if (!password.test(params.password)){
+      message.password = '（密碼必須包含數字、大小寫，至少8位數）';
+      errorpoint++;
+    }
+    if (errorpoint > 0){
+      await ctx.render('alter.ejs', { message: message, inputvalues: params });
     } else {
       await this.ctx.service.member.updateData(params);
       await ctx.redirect('/member/1');
     }
   }
-  async comfirm() {
+  async comfirm(){
     const { ctx } = this;
     const params = this.ctx.request.body;
-    if (Object.keys(params).length !== 0) {
-      const data = await this.app.model.Member.findOne( {
-        where: { member_id: params.id } 
+    if (Object.keys(params).length !== 0){
+      const member = await this.app.model.Member.findOne( {
+        where: { member_id: params.id },
       });
-      await ctx.render('comfirm.ejs', { data: data });
+      await ctx.render('comfirm.ejs', { member: member });
     } else {
-      let member = await this.ctx.service.member.pageData('1');
+      const member = await this.ctx.service.member.pageData('1');
       const count = await this.ctx.service.member.getCount();
-      await ctx.render('index.ejs', { data: member, page: count, msg: '請選擇刪除項目'} );
+      await ctx.render('index.ejs', { member: member, page: count, message: '請選擇刪除項目'} );
     }
   }
-  async delete() {
+  async delete(){
     const { ctx } = this;
     const params = this.ctx.request.body;
     await this.ctx.service.member.deleteData(params);
