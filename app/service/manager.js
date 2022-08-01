@@ -11,13 +11,15 @@ class managerService extends Service {
       data = { message: '密碼不能為空', account: params.account };
     } else {
       const manager = await this.app.model.Manager.findOne({
-        where: { account: params.account },
+        where: {
+          account: params.account
+        },
       });
       if (manager === null) {
         data = { message: '此帳號尚未註冊', account: params.account, password: params.password };
       } else if (params.password !== manager.password) {
         data = { message: '密碼錯誤', account: params.account, password: params.password };
-      } else { 
+      } else {
         data = true;
       }
     }
@@ -25,5 +27,5 @@ class managerService extends Service {
     return data;
   }
 }
- 
+
 module.exports = managerService;

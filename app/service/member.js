@@ -28,8 +28,10 @@ class memberService extends Service {
 
   async deleteData(params) {
     await this.app.model.Member.destroy({
-      where: { member_id: params.member_id },
-    })
+      where: {
+        member_id: params.member_id
+      },
+    });
   }
 
   async updateData(params) {
@@ -43,9 +45,11 @@ class memberService extends Service {
         password: params.password,
       },
       {
-        where: { member_id : params.member_id },
+        where: {
+          member_id : params.member_id
+        },
       }
-    )
+    );
   }
 }
 
