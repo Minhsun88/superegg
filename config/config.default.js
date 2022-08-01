@@ -38,7 +38,7 @@ module.exports = appInfo => {
     // load into agent, default false
     agent: false,
   };
-  
+
   config.security = {
     csrf: {
       enable: false,

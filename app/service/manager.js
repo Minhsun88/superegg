@@ -12,7 +12,7 @@ class managerService extends Service {
     } else {
       const manager = await this.app.model.Manager.findOne({
         where: {
-          account: params.account
+          account: params.account,
         },
       });
       if (manager === null) {
@@ -25,7 +25,7 @@ class managerService extends Service {
     }
 
     return data;
-  }
+  };
 }
 
 module.exports = managerService;
