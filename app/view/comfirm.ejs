@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>確認表格</title>
+    <link rel = "stylesheet" href="../public/css/comfirm.css">
+    <script src = "../public/js/comfirm.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class = "background">
+      <div class = "inside">
+        <h1>確認刪除</h1>
+        <form>
+          <table>
+            <tr>
+              <td id = "frameless">姓名</td>
+            </tr>
+            <tr>
+              <td><%= data.member_name %></td>
+            </tr>
+            <tr>
+              <td id = "frameless">性別</td>
+            </tr>
+            <tr>
+              <td>
+                <% if (data.sex === 1) { %>
+                  男生
+                <% } else { %>
+                  女生
+                <% } %>
+              </td>
+            </tr>
+            <tr>
+              <td id = "frameless">手機</td>
+            </tr>
+            <tr>
+              <td><%= data.phone %></td>
+            </tr>
+            <tr>
+              <td id = "frameless">生日</td>
+            </tr>
+            <tr>
+              <td><%= data.birthday %></td>
+            </tr>
+            <tr>
+              <td id = "frameless">EMAIL</td>
+            </tr>
+            <tr>
+              <td><%= data.email %></td>
+            </tr>
+            <tr>
+              <td id = "frameless">密碼</td>
+            </tr>
+            <tr>
+              <td><%= data.password %></td>
+            </tr>
+          </table>
+          <p>確定要刪除此筆資料嗎?</p>
+          <input type="hidden" name = "member_id" value = "<%= data.member_id %>">
+          <input class = "deletebutton" type = "submit" formaction = "/member/delete" formmethod = "post">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>會員名冊</title>
+    <link rel = "stylesheet" href = "../public/css/index.css">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "../public/js/index.js"></script>
+    <meta charset = "UTF-8">
+    <script>
+      
+    </script>
+  </head>
+
+  <body>
+    <div class = "background">
+      <div class = "inside">
+        <% if (typeof message != 'undefined'){ %>
+          <div id = "alert"><%= message %></div>
+        <% } %>
+        <h1>會員名冊</h1>
+        <select onchange = "javascript:location.href = '/member/' + this.value;">
+          <option>請選擇頁數</option>
+          <% for(i = 1; i < page / 5 + 1; i++){ %>
+            <option value = "<%= i %>"><%= i %></option>
+          <% } %>
+        </select>
+        <form>
+          <table>
+            <tr>
+              <th width = 5%><input type = "checkbox"></th>
+              <th width = 10%><td>姓名</td></th>
+              <th width = 5%><td>性別</td></th>
+              <th width = 10%><td>電話</td></th>
+              <th width = 30%><td>生日</td></th>
+              <th width = 30%><td>信箱</td></th>
+              <th width = 10%><td>密碼</td></th>
+            </tr>
+            <tr>
+              <% for(var i = 0; i < Data.length; i++) {%>
+                <tr>
+                  <td>
+                    <input name = "id" id = "id" type = "radio" value = "<%= Data[i].member_id %>">
+                  </td>
+                  <td>
+                    <%= Data[i].member_name %>
+                  </td>
+                  <td>
+                    <% if (Data[i].sex == '1'){ %>
+                      男
+                    <% } else { %>
+                      女
+                    <% } %>
+                  </td>
+                  <td>
+                    <%= Data[i].phone %>
+                  </td>
+                  <td>
+                    <%= Data[i].birthday%>
+                  </td>
+                  <td>
+                    <%= Data[i].email %>
+                  </td>
+                  <td>
+                    <%= Data[i].password %>
+                  </td>
+                </tr>
+            <% } %>
+            </tr>
+          </table>
+          <div style = "width: 100%;">
+            <input type = "submit" id = "Insert" value = "註冊會員" formmethod = "post" formaction = "/member/regist">
+            <input type = "submit" id = "Update" value = "修改會員" formmethod = "post" formaction = "/member/alter">
+            <input type = "submit" id = "Delete" value = "刪除會員" formmethod = "post" formaction = "/member/comfirm">
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
