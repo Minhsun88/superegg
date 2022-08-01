@@ -25,7 +25,7 @@ class managerService extends Service {
     }
 
     return data;
-  };
+  }
 }
 
 module.exports = managerService;

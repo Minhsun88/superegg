@@ -9,11 +9,11 @@ class memberService extends Service {
         offset: (parseInt(params) - 1) * 5,
       }
     );
-  };
+  }
 
   async getCount() {
     return await this.app.model.Member.count();
-  };
+  }
 
   async createData(params) {
     await this.app.model.Member.create({
@@ -24,7 +24,7 @@ class memberService extends Service {
       email: params.email,
       password: params.password,
     });
-  };
+  }
 
   async deleteData(params) {
     await this.app.model.Member.destroy({
@@ -32,7 +32,7 @@ class memberService extends Service {
         member_id: params.member_id,
       },
     });
-  };
+  }
 
   async updateData(params) {
     await this.app.model.Member.update(
@@ -50,7 +50,7 @@ class memberService extends Service {
         },
       }
     );
-  };
+  }
 }
 
 module.exports = memberService;
