@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href="../public/css/login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        let minLength = 3;
+        let $accountFeedback = $('#accountFeedback');
+        let $passwordFeedback = $('#passwordFeedback');
+
+        $(document).on('keyup' ,'#account' , function() {
+          let accountLen = $(this).val().length;
+          
+          if (accountLen == 0) {
+            $accountFeedback.html('帳號長度至少 ' + minLength + ' 個字元');
+          } else if  (accountLen < minLength) {
+            $accountFeedback.html('帳號長度不夠');
+          } else {
+            $accountFeedback.html('');
+          }
+        });
+
+        $(document).on('keyup' ,'#password' , function() {
+          let passwordLen = $(this).val().length;
+          
+          if (passwordLen == 0) {
+            $passwordFeedback.html('密碼長度至少 ' + minLength + ' 個字元');
+          } else if  (passwordLen < minLength) {
+            $passwordFeedback.html('密碼長度不夠');
+          } else {
+            $passwordFeedback.html('');
+          }
+        });
+
+        if(document.getElementById('message')) {
+          alert(document.getElementById('message').value);
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <div class = "wrap">
+      <h1>管理者登入器</h1>
+      <form id = "login" action="/manager/identify" method="post">
+        <div id = "accountBox">
+          <% if (typeof account === 'undefined'){ %>
+            <input class = "inputbox" type = "text" name = "account" id = "account" placeholder = "請輸入帳號" 
+            onKeyUp = "value=value.replace(/[\W]/g,'')"><br>
+          <% } else { %>
+            <input class = "inputbox" type = "text" name = "account" id = "account" placeholder = "請輸入帳號" 
+            value = "<%= account %>" onKeyUp = "value=value.replace(/[\W]/g,'')"><br>
+          <% } %>
+          <div id = "accountFeedback"></div>
+        </div><br>
+        <div id = "passwordBox">
+          <% if (typeof password === 'undefined'){ %>
+            <input class = "inputbox" type = "password" name = "password" id = "password" placeholder = "請輸入密碼" 
+            onKeyUp = "value=value.replace(/[\W]/g,'')"><br>
+          <% } else { %>
+            <input class = "inputbox" type = "password" name = "password" id = "password" placeholder = "請輸入密碼" 
+            value = "<%= password %>" onKeyUp = "value=value.replace(/[\W]/g,'')"><br>
+          <% } %>
+          <div id = "passwordFeedback"></div>
+        </div><br>
+        <input id = "loginbtn" class = "loginbtn" type = "submit" value = "登入">
+      </form>
+    </div>
+    
+    <% if (typeof message !== 'undefined'){ %>
+      <input type = "hidden" id = "message" value = "<%= message %>">
+    <% } %>
+  </body>
+</html>
