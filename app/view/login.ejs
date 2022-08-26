@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" href = "../public/css/login.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  </head>
+  <body>
+    <div class = "wrap">
+      <h1>管理者登入器</h1>
+      <form id = "login" action="/manager/identify" method="post">
+        <div id = "accountBox">
+          <% if (typeof account === 'undefined'){ %>
+            <input class = "inputbox" type = "text" name = "account" id = "account" placeholder = "請輸入帳號"><br>
+          <% } else { %>
+            <input class = "inputbox" type = "text" name = "account" id = "account" placeholder = "請輸入帳號" value = "<%= account %>"><br>
+          <% } %>
+        </div><br>
+        <div id = "passwordBox">
+          <% if (typeof password === 'undefined'){ %>
+            <input class = "inputbox" type = "password" name = "password" id = "password" placeholder = "請輸入密碼"><br>
+          <% } else { %>
+            <input class = "inputbox" type = "password" name = "password" id = "password" placeholder = "請輸入密碼" 
+            value = "<%= password %>"><br>
+          <% } %>
+        </div><br>
+        <input id = "loginbtn" class = "loginbtn" type = "submit" value = "登入">
+      </form>
+    </div>
+    
+    <% if (typeof message !== 'undefined'){ %>
+      <input type = "hidden" id = "message" value = "<%= message %>">
+      <script>
+        alert(document.getElementById('message').value);
+      </script>
+    <% } %>
+  </body>
+</html>
